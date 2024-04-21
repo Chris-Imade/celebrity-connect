@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.blur {
+  background: transparent;
+  position: fixed;
+  width: calc(100vw);
+  backdrop-filter: blur(0px);
+  height: 105px;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.bg-gradient-to-b {
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-from),
+    var(--gradient-to)
+  );
+}
+
+.from-black {
+  --gradient-from: #000;
+}
+
+.to-slate-500 {
+  --gradient-to: #16181a; /* Slate 500 color */
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+}

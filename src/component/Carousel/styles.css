@@ -1,0 +1,127 @@
+/* Define the background color variable */
+:root {
+  --grey: #000000;
+}
+
+/* Styles for the main container */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styles for the slider container */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-top: 6.7rem;
+}
+
+/* Styles for the slider */
+.slider {
+  position: relative;
+  height: 90vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Responsive styles for the slider */
+@media only screen and (max-width: 375px) {
+  .slider {
+    height: 400px;
+    width: 300px;
+  }
+}
+
+/* Styles for the images within the slider */
+.image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  will-change: transform, opacity;
+}
+
+.buttons button {
+  outline: none;
+  border: none;
+  user-select: none;
+  padding: 10px 12px;
+  transform: skewY(-5deg) rotate(5deg);
+  background-color: var(--grey);
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  transition: 0.07s ease-out transform;
+}
+
+.buttons button:first-of-type {
+  margin-right: 15px;
+}
+
+/* Button hover and active styles */
+.buttons button:hover {
+  cursor: pointer;
+}
+
+.buttons button:active {
+  transform: scale(0.85) skewY(-5deg) rotate(5deg);
+}
+
+/* Styles for the thumbnails */
+.thumbnails {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for the thumbnail containers */
+.thumbnail-container {
+  position: relative;
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;
+}
+
+/* Responsive styles for the thumbnails */
+@media only screen and (max-width: 375px) {
+  .thumbnail-container {
+    height: 70px;
+    width: 50px;
+  }
+}
+
+.thumbnail-container:not(:last-of-type) {
+  margin-right: 5px;
+}
+
+/* Styles for the thumbnail images */
+.thumbnail-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+}
+
+/* Styles for the active indicator */
+.active-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: var(--grey);
+  transition: 1s cubic-bezier(0.56, 0.03, 0.12, 1.04) transform;
+  border-radius: 100%;
+}
+
+.active-indicator.active {
+  transform: scaleX(1);
+}
