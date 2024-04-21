@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../App.module.css";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navigation from "../component/Navigation/Navigation";

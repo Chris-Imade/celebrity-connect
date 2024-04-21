@@ -1,4 +1,3 @@
-import React from "react";
 import BlackBg from "../../assets/bg-blackk.webp";
 import { motion } from "framer-motion";
 

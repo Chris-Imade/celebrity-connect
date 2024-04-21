@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import Logo from "../../assets/logo.png";
 import styles from "../../App.module.css";
 import { motion, useCycle } from "framer-motion";
@@ -6,6 +5,7 @@ import { useDimensions } from "../../utils/use-dimensions";
 import { MenuToggle } from "../MenuToggle/MenuToggle";
 import { Nav } from "./Nav/Nav";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const sidebar = {
   open: (height = 1000) => ({

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import CelebCard from "../CelebCard/CelebCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
