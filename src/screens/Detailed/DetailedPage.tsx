@@ -64,7 +64,7 @@ const DetailedPage = () => {
   return (
     <>
       <div
-        className={`app ${styles.heroBg} ${styles.navBar} lg:px-[123px] px-[20px] h-[100vh] lg:pt-[12rem] pt-8rem`}
+        className={`app ${styles.heroBg} ${styles.navBar} lg:px-[123px] px-[20px] h-[100vh] mt-[8rem] lg:pt-[12rem] pt-8rem`}
       >
         <motion.div
           className={`${styles.progressBar}`}
@@ -117,7 +117,7 @@ const DetailedPage = () => {
               >
                 {details[0]?.excerpt}
               </p>
-              <a href="https://forms.gle/3KKrXE3LHr9Y44AW8" target="_blank">
+              <a href="https://forms.gle/QLy5mLB7eUPwxUoN7" target="_blank">
                 <button
                   style={{ fontFamily: styles.poppinsBold }}
                   className="bg-[#F28D31] text-xl font-semibold text-white mt-5 rounded-md w-full hover:text-[#F28D31] hover:bg-white transition-all duration-500 ease-out py-4"

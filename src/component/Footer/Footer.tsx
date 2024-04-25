@@ -4,7 +4,7 @@ import globalStyles from "../../App.module.css";
 const Footer = () => {
   return (
     <div
-      className={`h-[336px] bg-[#19191B] flex items-center lg:items-start flex-col lg:flex-row justify-between py-[76px] lg:px-[123px] px-[20px]`}
+      className={` bg-[#19191B] flex items-center lg:items-start flex-col lg:flex-row justify-between py-[76px] lg:px-[123px] px-[20px]`}
     >
       <div>
         <img

@@ -33,3 +33,56 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background-color: black;
+}
+
+/* Style vertical scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #fdaf42; /* Color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5acbc9; /* Color of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d9f9d; /* Color of the scroll thumb on hover */
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background: #fff;
+  height: 110vh;
+}

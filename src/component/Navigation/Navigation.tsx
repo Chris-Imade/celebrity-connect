@@ -83,7 +83,7 @@ const Navigation = () => {
         </Link>
       </div>
       {/* Mobile - View */}
-      <div className={`flex lg:hidden fixed top-0 z-50`}>
+      <div className={`flex lg:hidden fixed top-0 z-50 w-full`}>
         <div className="w-full">
           <img src={Logo} width={150} className={`mt-4`} alt="Logo" />
 

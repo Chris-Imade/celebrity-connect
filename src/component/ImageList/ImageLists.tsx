@@ -1,19 +1,32 @@
 import { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import CelebCard from "../CelebCard/CelebCard";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Masonry from "react-responsive-masonry";
 import { DataContext } from "../../App";
-
+import NotFound from "../../assets/404.gif";
 
 const ImageLists = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  
   const celebrities = useContext(DataContext);
 
-  console.log('celebrities: ', celebrities);
+  console.log("celebrities: ", celebrities);
+
+  const handleSearch = (searchQuery: string) =>
+    celebrities?.filter(
+      (celeb) =>
+        searchQuery &&
+        Object.values(celeb).some(
+          (value) =>
+            typeof value === "string" &&
+            value.toLowerCase().includes(searchQuery?.toLowerCase())
+        )
+    );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 430);
+      setIsMobile(window.innerWidth <= 700);
     };
 
     // Set initial mobile state
@@ -26,21 +39,25 @@ const ImageLists = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const searchResult =
+    searchQuery.length === 0 ? celebrities : handleSearch(searchQuery);
+
   return (
     <>
-      <div className="bg-gradient-to-b from-black to-slate-500 px-32 py-10 flex justify-between">
-        <div className="flex items-center">
+      <div className="bg-gradient-to-b from-black to-slate-500 lg:px-32 py-10 flex flex-col lg:flex-row justify-between">
+        <div className="flex flex-row items-center pl-6 lg:pl-0">
           <input
             type="text"
             placeholder="Search Artist"
-            className="w-[500px] p-3 outline-none"
+            className="lg:w-[500px] p-3 outline-none"
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button className="bg-[#F28D31] py-[0.63rem] px-8 text-white font-semibold text-xl">
             Search
           </button>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center pl-6 lg:pl-0 mt-6 lg:mt-0">
           <h3 className="text-white text-3xl mr-4">Filter By</h3>
           <select className="block bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:border-blue-500">
             <option value="popularity">Popularity</option>
@@ -52,33 +69,37 @@ const ImageLists = () => {
       </div>
       {/* columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}} */}
       {/* Celebrity Listi */}
-      {isMobile ? (
+      {searchResult?.length === 0 ? (
+        <div className="w-full flex justify-center items-center my-32">
+          <img src={NotFound} alt="404 gif" />
+        </div>
+      ) : isMobile ? (
         <div className={``}>
-          <ResponsiveMasonry
+          <Masonry
             style={{
               backgroundColor: "black",
             }}
-            columnsCountBreakPoints={{ 0: 1, 430: 1, 750: 2, 900: 5 }}
+            columnsCount={1}
           >
-            {celebrities?.map((celeb, index) => (
+            {searchResult?.map((celeb, index) => (
               <CelebCard key={index} celeb={celeb} index={index} />
             ))}
-          </ResponsiveMasonry>
+          </Masonry>
         </div>
       ) : (
         <div className={``}>
           <Masonry
-             style={{
-               backgroundColor: "black",
-             }}
-             columnsCount={4}
-           >
-             {celebrities?.map((celeb, index) => (
-               <CelebCard key={index} celeb={celeb} index={index} />
-             ))}
-           </Masonry>
-         </div>
-       )}
+            style={{
+              backgroundColor: "black",
+            }}
+            columnsCount={4}
+          >
+            {searchResult?.map((celeb, index) => (
+              <CelebCard key={index} celeb={celeb} index={index} />
+            ))}
+          </Masonry>
+        </div>
+      )}
     </>
   );
 };

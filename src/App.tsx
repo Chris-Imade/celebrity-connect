@@ -5,7 +5,7 @@ import DetailedPage from "./screens/Detailed/DetailedPage";
 import { client } from "./client";
 
 // Define the type for the data context
-type CelebritiesData = {
+export type CelebritiesData = {
   id: number;
   name: string;
   image: {
@@ -39,6 +39,7 @@ function App() {
           setCelebrities(data);
           // Save fetched data to localStorage
           localStorage.setItem("celebrities", JSON.stringify(data));
+          console.log('direct celeb: ', data);
         })
         .catch((err) => console.log("Error: ", err.message));
     };

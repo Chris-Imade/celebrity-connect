@@ -8,7 +8,7 @@ const ContactUs = () => {
   const [messageFocus, setMessageFocus] = useState<boolean>(false);
 
   return (
-    <div className="h-[32rem] flex flex-col-reverse lg:flex-row" id="contact">
+    <div className="lg:h-[32rem] flex flex-col-reverse lg:flex-row" id="contact">
       <div className="flex-1 lg:pl-[7rem] pl-4 pr-7 pb-5 lg:py-[2rem] py-4">
         <h2 style={{ fontFamily: styles.boldNunito }} className="text-4xl">
           Contact Us
@@ -29,7 +29,7 @@ const ContactUs = () => {
             }}
             onFocus={() => setNameFocus(true)}
             onBlur={() => setNameFocus(false)}
-            className="w-[50%]"
+            className="lg:w-[50%] w-[100%]"
             placeholder="Your name"
           />
           <input
@@ -47,7 +47,7 @@ const ContactUs = () => {
             }}
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
-            className="w-[50%]"
+            className="lg:w-[50%] w-[100%]"
             placeholder="Your email"
           />
         </div>

@@ -99,17 +99,28 @@ const Carousel: React.FC = () => {
               onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
               className="image relative"
             >
-              <div className="absolute left-32 bottom-52 bg-[rgba(0,0,0,0.3)] rounded-md max-w-[40rem] p-4">
-                <h2 className="text-white font-semibold text-6xl" style={{ fontFamily: styles.boldNunito}}>
+              <div className="absolute flex flex-col items-center lg:items-start lg:left-32 lg:bottom-52 bottom-40 left-[50%] right-[50%] bg-[rgba(0,0,0,0.3)] rounded-md lg:max-w-[40rem] p-4">
+                <h2
+                  className="text-white font-semibold text-6xl"
+                  style={{ fontFamily: styles.boldNunito }}
+                >
                   {IMAGES[activeImageIndex].stage_name}
                 </h2>
                 <div className="w-[20rem] bg-white h-[2px] mt-4"></div>
-                <p className="text-white mt-5" style={{ fontFamily: styles.poppinsMedium }}>
+                <p
+                  className="text-white mt-5 hidden lg:block"
+                  style={{ fontFamily: styles.poppinsMedium }}
+                >
                   {IMAGES[activeImageIndex].excerpt}
                 </p>
-                <button style={{ fontFamily: styles.poppinsBold }} className="bg-[#F28D31] px-20 text-xl font-semibold text-white mt-5 rounded-md hover:text-[#F28D31] hover:bg-white transition-all duration-500 ease-out py-4">
-                  Book Now
-                </button>
+                <a href="https://forms.gle/QLy5mLB7eUPwxUoN7" target="_blank">
+                  <button
+                    style={{ fontFamily: styles.poppinsBold }}
+                    className="bg-[#F28D31] lg:px-20 min-w-[12rem] text-xl font-semibold text-white mt-5 rounded-md hover:text-[#F28D31] hover:bg-white transition-all duration-500 ease-out py-4"
+                  >
+                    Book Now
+                  </button>
+                </a>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -127,8 +138,7 @@ const Carousel: React.FC = () => {
         >
           <img src={RightArr} alt="right arrow" />
         </button>
-
-        <div className="thumbnails absolute bottom-10">
+        <div className="thumbnails absolute bottom-10 hidden lg:flex">
           {IMAGES.map((image: Image) => (
             <div
               key={image.id}

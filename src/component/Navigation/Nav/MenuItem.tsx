@@ -35,12 +35,12 @@ export const MenuItem: React.FC<MenuItemProps> = ({ i }) => {
       <a
         className={`${
           i !== "auth"
-            ? `text-[#211F2D] hover:text-[#5ACBC9] ${styles.regularNunito}`
+            ? `text-[#211F2D] hover:text-[#5ACBC9] ${styles.boldNunito}`
             : `bg-[#211F2D] px-12 py-2 rounded-[5px] text-white font-semibold ${styles.boldNunito}`
         } text-[24px]`}
-        href={`${i === "auth" ? "/contact-us" : "#" + i}`}
+        href={`${i === "auth" ? "#contact" : "#" + i}`}
       >
-        {i === "auth" && "Contact Us"}
+        {i === "auth" ? "Contact Us" : i}
       </a>
     </motion.li>
   );
