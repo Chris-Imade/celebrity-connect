@@ -56,14 +56,6 @@ const Navigation = () => {
             <li className={`lg:mx-[40px]`}>
               <a
                 className={`text-white text-[18px] opacity-70 hover:opacity-100 hover:text-[#5ACBC9] transition-all duration-500 ease-out ${styles.boldNunito}`}
-                href="#"
-              >
-                Services
-              </a>
-            </li>
-            <li className={`lg:mx-[40px]`}>
-              <a
-                className={`text-white text-[18px] opacity-70 hover:opacity-100 hover:text-[#5ACBC9] transition-all duration-500 ease-out ${styles.boldNunito}`}
                 href="#about"
               >
                 About us

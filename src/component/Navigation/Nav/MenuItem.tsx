@@ -32,16 +32,16 @@ export const MenuItem: React.FC<MenuItemProps> = ({ i }) => {
       whileTap={{ scale: 0.95 }}
       className="text-center py-6"
     >
-      <a
-        className={`${
+      <button
+      onClick={() => i === "auth" ? location.replace("#contact") : i === 'home' ? location.replace('#') : location.replace("#" + i)}
+        className={`uppercase ${
           i !== "auth"
             ? `text-[#211F2D] hover:text-[#5ACBC9] ${styles.boldNunito}`
             : `bg-[#211F2D] px-12 py-2 rounded-[5px] text-white font-semibold ${styles.boldNunito}`
         } text-[24px]`}
-        href={`${i === "auth" ? "#contact" : "#" + i}`}
       >
         {i === "auth" ? "Contact Us" : i}
-      </a>
+      </button>
     </motion.li>
   );
 };

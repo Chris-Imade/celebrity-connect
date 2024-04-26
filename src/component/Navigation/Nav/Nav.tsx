@@ -19,4 +19,4 @@ export const Nav = () => (
   </motion.ul>
 );
 
-const itemIds = ["Home", "Services", "About Us", "auth"];
+const itemIds = ["home", "about", "auth"];

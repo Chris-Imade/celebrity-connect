@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion, useScroll, useSpring } from "framer-motion";
-import Navigation from "../../component/Navigation/Navigation";
 import styles from "../../App.module.css";
 import Footer from "../../component/Footer/Footer";
 import { client, urlFor } from "../../client";
+import './styes.css';
+import BackArr from '../../assets/backArr.png';
 
 interface Resp {
   id: number;
@@ -22,6 +23,7 @@ interface Resp {
   id_number: string;
   slug: { _type: "slug"; current: string };
   excerpt: string;
+  description: string;
 }
 
 const DetailedPage = () => {
@@ -46,13 +48,6 @@ const DetailedPage = () => {
 
   console.log("Details ", details);
 
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
   useEffect(() => {
     const query = `*[_type == "celebrity" && slug.current == "${slug}"]`;
     client
@@ -64,23 +59,22 @@ const DetailedPage = () => {
   return (
     <>
       <div
-        className={`app ${styles.heroBg} ${styles.navBar} lg:px-[123px] px-[20px] h-[100vh] mt-[8rem] lg:pt-[12rem] pt-8rem`}
+        className={`app ${styles.heroBg} ${styles.navBar} lg:px-[123px] px-[20px] mt-[2rem]`}
       >
-        <motion.div
-          className={`${styles.progressBar}`}
-          style={{ scaleX, zIndex: 200 }}
-        />
-        <Navigation />
+        {/* small back navigation here */}
+        <button onClick={() => window.history.back()}>
+          <img className="lg:ml-8 mb-8 lg:mb-0" src={BackArr} alt="back arr" width={24} />
+        </button>
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between">
           <div className="lg:w-1/2 mx-auto mb-8 lg:mb-0">
             <img
-              className="w-full h-auto lg:h-full max-h-[32rem] object-contain"
+              className="w-full h-auto lg:h-full max-h-[42rem] object-contain"
               src={details ? urlFor(details[0].image.asset).url() : ""}
               alt={details ? details[0]?.name : "some picture"}
             />
           </div>
           {details && (
-            <div className="lg:w-1/2 lg:ml-16">
+            <div className="lg:w-1/2 lg:ml-16 h-[90vh] overflow-scroll overflow-x-hidden right-detail mb-24">
               <h1
                 style={{ fontFamily: styles.boldNunito }}
                 className="text-white text-4xl mb-4"
@@ -109,13 +103,7 @@ const DetailedPage = () => {
                 style={{ fontFamily: styles.boldNunito }}
                 className="text-white mb-4"
               >
-                {details[0]?.id_number}
-              </p>
-              <p
-                style={{ fontFamily: styles.boldNunito }}
-                className="text-white mb-4"
-              >
-                {details[0]?.excerpt}
+                {details[0]?.description}
               </p>
               <a href="https://forms.gle/QLy5mLB7eUPwxUoN7" target="_blank">
                 <button
