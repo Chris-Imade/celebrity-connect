@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { motion, useScroll, useSpring } from "framer-motion";
 import styles from "../../App.module.css";
 import Footer from "../../component/Footer/Footer";
 import { client, urlFor } from "../../client";
